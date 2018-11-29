@@ -1,5 +1,5 @@
 # vuejs-interview-questions
-List of VueJS Interview Questions
+A list of interview questions for front-end developers. The questions are focused on Vue.js and vanilla JavaScript.
 
 > Click :star:if you like the project. Pull Requests are highly appreciated.
 
@@ -21,6 +21,8 @@ List of VueJS Interview Questions
 | 12  | [What is the vue-cli?](#what-is-the-vue-cli)
 | 13  | [On what design pattern is Vue based on?](#on-what-design-pattern-is-vue-based-on)
 | 14  | [What is Vuex?](#what-is-vuex)
+| 15  | [What is the difference between `undefined` and `not defined` in JavaScript?](#what-is-the-difference-between-undefined-and-not-defined-in-javascript)
+| 16  | [How do you empty an array in JavaScript?](#how-do-you-empty-an-array-in-javascript)
 
 ### What is VueJS?
 Vue.js is an open-source, progressive Javascript framework for building user interfaces that aim to be incrementally adoptable. The core library of VueJS is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. The most recent version of Vue.js as of November 2018 is version 2.
@@ -125,7 +127,103 @@ The vue-cli or command line interface is a program used to install Vue.js. Apart
 Vue.js is based on the Model-View-View Model (MVVM) design pattern. The main motivation for this pattern is a separation model from the view.
 ### What is Vuex?
 Vuex is a state management pattern and library for Vue.js apps. It is designed to a main data storage for all app components and guarantee predictability of reactive data changes.
+### What is the difference between `undefined` and `not defined` in JavaScript?
+In JavaScript if you try to use a variable that doesn't exist and has not been declared, then JavaScript will throw an error `var name is not defined` and the script will stop executing thereafter. But If you use `typeof undeclared_variable` then it will return `undefined`.
 
+Before starting further discussion let's understand the difference between declaration and definition.
 
+`var x` is a declaration because you are not defining what value it holds yet, but you are declaring its existence and the need for memory allocation.
+
+```javascript
+var x; // declaring x
+console.log(x); // output: undefined
+```
+
+`var x = 1` is both declaration and definition (also we can say we are doing initialisation), Here declaration and assignment of value happen inline for variable x, In JavaScript every variable declaration and function declaration brings to the top of its current scope in which it's declared then assignment happen in order this term is called `hoisting`.
+
+A variable can be declared but not defined. When we try to access it, It will result `undefined`.
+
+```javascript
+var x; // Declaration
+typeof x === 'undefined'; // Will return true
+```
+
+A variable can be neither declared nor defined. When we try to reference such variable then the result will be `not defined`.
+
+```javascript
+console.log(y);  // Output: ReferenceError: y is not defined
+```
+
+### Ref Link:
+[http://stackoverflow.com/questions/20822022/javascript-variable-definition-declaration](http://stackoverflow.com/questions/20822022/javascript-variable-definition-declaration)
+### How do you empty an array in JavaScript?
+For instance, say we have:
+
+```javascript
+var arrayList =  ['a', 'b', 'c', 'd', 'e', 'f'];
+```
+
+How can we empty the array above?
+
+There are a couple of ways by which we can empty an array, So let's discuss all the possible way by which we can empty an array.
+
+#### Method 1
+
+```javascript
+arrayList = [];
+```
+
+The code above will set the variable `arrayList` to a new empty array. This is recommended if you don't have **references to the original array** `arrayList` anywhere else because It will actually create a new empty array. You should be careful with this way of empty the array, because if you have referenced this array from another variable, then the original reference array will remain unchanged, Only use this way if you have only referenced the array by its original variable `arrayList`.
+
+For instance:
+
+```javascript
+var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+arrayList = []; // Empty the array
+console.log(anotherArrayList); // Output ['a', 'b', 'c', 'd', 'e', 'f']
+```
+
+#### Method 2
+
+```javascript
+arrayList.length = 0;
+```
+
+The code above will clear the existing array by setting its length to 0. This way of emptying an array will also update all the reference variables that point to the original array. 
+
+For instance:
+
+```javascript
+var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+arrayList.length = 0; // Empty the array by setting length to 0
+console.log(anotherArrayList); // Output []
+```
+
+#### Method 3
+
+```javascript
+arrayList.splice(0, arrayList.length);
+```
+
+Above implementation will also work perfectly. This way of empty the array will also update all the references of the original array.
+
+```javascript
+var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+arrayList.splice(0, arrayList.length); // Empty the array by setting length to 0
+console.log(anotherArrayList); // Output []
+```
+
+#### Method 4
+
+```javascript
+while(arrayList.length) {
+  arrayList.pop();
+}
+```
+
+Above implementation can also empty the array. But not recommended to use often.
 
 
