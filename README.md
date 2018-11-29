@@ -1,7 +1,7 @@
 # vuejs-interview-questions
-List of 300 VueJS Interview Questions
+List of VueJS Interview Questions
 
-> Click :star:if you like the project. Pull Request are highly appreciated.
+> Click :star:if you like the project. Pull Requests are highly appreciated.
 
 ### Table of Contents
 -------------------------------------------------------------------
@@ -14,7 +14,8 @@ List of 300 VueJS Interview Questions
 |5  | [What is the difference between v-show and v-if directives](#what-is-the-difference-between-v-show-and-v-if-directives)|
 |6  | [What is the purpose of v-for directive?](#what-is-the-purpose-of-v-for-directive)|
 |7  | [What is the purpose of v-for directive?](#what-is-the-purpose-of-v-for-directive)|
-|8  | [What is vue instance?](#What is vue instance)|
+|8  | [What is vue instance?](#what-is-the-vue-instance)|
+|9  | [What are the differences between one-way data flow and two-way data binding?](#what-are-the-differences-between-one-way-data-flow-and-two-way-data-binding) |
 
 ### What is VueJS?
 Vue.js is an open-source, progressive Javascript framework for building user interfaces that aim to be incrementally adoptable. The core library of VueJS is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects.
@@ -25,7 +26,18 @@ Below are the some of major features available with VueJS
  3. **Templates:** VueJS provides HTML based templates that bind the DOM with the Vue instance data
  4. **Routing:** Navigation between pages is achieved through vue-router
  5. **Light weight:** VueJS is light weight library compared to other frameworks
-### What are the lifecycle methods of VueJS?
+ 6. **Transitions:**
+ 7. **Reactivity:**
+### What are the lifecycle hooks or methods in VueJS?
+ 1. **beforeCreate:**
+ 2. **created:**
+ 3. **beforeMount:**
+ 4. **mounted:**
+ 5. **beforeUpdated:**
+ 6. **updated:**
+ 7. **beforeDestroy:**
+ 8. **destroyed:**
+
 ### What are the conditional directives?
 VueJS provides set of directives to show or hide elements based on conditions. The available directives are: ** v-if, v-else, v-else-if and v-show**
 **1. v-if:**  The v-if directive adds or removes DOM elements based on the given expression. For example, the below button will not show if isLoggedIn is set to false.
@@ -64,7 +76,7 @@ Below are some of the main differences between between **v-show** and **v-if** d
 3. v-if has higher toggle costs while v-show has higher initial render costs. i.e, v-show has a performance advantage if the elements are switched on and off frequently, while the v-if has the advantage when it comes to initial render time.
 ### What is the purpose of v-for directive?
 The built-in v-for directive allows us to loop through items in an array or object.
-### What is vue instance?
+### What is the vue instance?
     Every Vue application works by creating a new Vue instance with the Vue function. Generally the variable vm (short for ViewModel) is used to refer Vue instance. You can create vue instance as below,
     ```javascript
     var vm = new Vue({
@@ -72,6 +84,10 @@ The built-in v-for directive allows us to loop through items in an array or obje
     })
     ```
     As mentioned in the above code snippets, you need to pass options object. You can find the full list of options in the API reference.
+### What are the differences between one-way data flow and two-way data binding?
+In one-way data flow the view (UI) part of an application does not update automatically when the data Model is changed so we need to write some custom code to make it update every time a data model is changed. In Vue.js, the v-bind is used for one-way data flow or binding.
+
+In two-way data binding, the view (UI) part of the application automatically updates when the data Model is changed. In Vue.js, the v-model directive is used for two-way data binding.
 
 
 
